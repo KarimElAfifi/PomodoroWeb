@@ -334,25 +334,8 @@ fetch("aboutText.txt")
     });
 }
 
-function openSettings() {
-  closeMenu();
 
-  const settingsSection = document.getElementById("settings");
-  if (!settingsSection) return;
 
-  settingsSection.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-};
-
-function openStats() {
-  closeMenu();
-
-  const statsSection = document.getElementById("stats");
-  if (!statsSection) return;
-  return alert(todaysCount);
-};
 
 document.querySelectorAll("button[data-action]").forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -371,5 +354,16 @@ if (el.bgReset) {
     } catch (e) {}
     if (el.bgImage) el.bgImage.value = null;
     removeBackgroundImage();
+  });
+}
+
+// Scroll up button
+const scrollUpBtn = document.querySelector(".button");
+if (scrollUpBtn) {
+  scrollUpBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   });
 }
