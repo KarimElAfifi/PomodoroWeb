@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pomodoro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <button
+        id="menuToggle"
+        class="hamburger"
+        aria-label="Menü öffnen"
+        aria-haspopup="false"
+        aria-expanded="false"
+        aria-controls="menuPanel"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="menuPanel" class="dropdown" role="menu"> 
+        Menü:
+        <button class="item" role="menuitem" data-action="settings">
+          Einstellungen
+        </button>
+        <button class="item" role="menuitem" data-action="stats">
+          Statistik
+        </button>
+        <button class="item" role="menuitem" data-action="theme">Theme</button>
+        <button class="item" role="menuitem" data-action="about">
+          About POMODORO-TIMER
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <h1>POMODORO-TIMER</h1>
+
+      <div class="tabs">
+        <button id="btnFocus" class="active">Focus</button>
+        <button id="btnBreak">Break</button>
+      </div>
+
+      <div id="display">25:00</div>
+
+      <div class="controls">
+        <button id="btnStartPause">Start</button>
+        <button id="btnReset">Reset</button>
+      </div>
+
+      <div class="settings">
+        <label
+          >Focus:
+          <input
+            id="inFocus"
+            type="number"
+            value="25"
+            min="5"
+            max="120"
+            step="5"
+        /></label>
+        <label
+          >Break:
+          <input id="inBreak" type="number" value="5" min="1" max="60" step="1"
+        /></label>
+        <p id="todayCount" style="opacity: 0.8; font-size: 12px; margin: 0">
+          Heute: 0 Fokus-Sessions
+        </p>
+        <label style="display: block; margin-top: 8px"
+          >Hintergrundfarbe
+          <input
+            id="bgColor"
+            type="color"
+            value="#ffffff"
+            style="margin-left: 8px"
+        /></label>
+        <div
+          style="margin-top: 8px; display: flex; gap: 8px; align-items: center"
+        >
+          <label style="font-size: 12px; margin: 0"
+            >Hintergrundbild <br />
+            aus Datei:
+            <input
+              id="bgImage"
+              type="file"
+              accept="image/*"
+              style="margin-left: 8px"
+            />
+          </label>
+          <button
+            id="bgReset"
+            type="button"
+            style="font-size: 12px; padding: 6px"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <button class="button">
+        <svg class="svgIcon" viewBox="0 0 384 512">
+          <path
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+          ></path>
+        </svg>
+      </button>
+
+      <div class="about-container" id="about">
+        <h2 class="about-title">About Pomodoro</h2>
+        <div id="aboutText" class="about-text"></div>
+      </div>
+    </main>
+    <!-- <audio id="ding" preload="auto">
+        <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABYAAABkYXRhAAAAAAAAPw==" type="audio/wav">
+      </audio>
+    -->
+    <script>
+      if ("Notification" in window && Notification.permission === "default") {
+        Notification.requestPermission().catch(() => {});
+      }
+    </script>
+    <script src="app.js"></script>
+    <footer>
+      <p>&copy; 2025 Karim El-Afifi GmbH</p>
+    </footer>
+  </body>
+</html>
